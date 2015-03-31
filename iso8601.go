@@ -42,5 +42,19 @@ func (it *Time) UnmarshalJSON(data []byte) error {
 }
 
 func (it Time) String() string {
+	if it.IsZero() {
+		return ""
+	}
 	return time.Time(it).String()
+}
+
+func (it Time) IsZero() bool {
+	return time.Time(it).IsZero()
+}
+
+func (it Time) Format(format string) string {
+	if it.IsZero() {
+		return ""
+	}
+	return time.Time(it).Format(format)
 }
